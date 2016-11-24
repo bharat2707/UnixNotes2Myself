@@ -10,7 +10,7 @@
 # 3. The search is recursive and it will search all subdirectories.
 
 # Common Examples
-
+find . -name foo* 2>/dev/null
 
 # Examples with details
 find                                    # Display the pathnames of all files in the current directory recursively.
@@ -30,6 +30,10 @@ find . -name Hello.java                 # Finds Hello.java in the current direct
                                         # is to perform a name search for the filename Hello.java.
 
 # Cool Tricks
+# Find the files whose name contains reserved characters in Windows
+# Source: https://msdn.microsoft.com/en-us/library/windows/desktop/aa365247(v=vs.85).aspx
+# Look for < or > or : or " or | or \ or * or ? in the filenames.
+find . -type f -regex '.*\(<\|>\|:\|"\|\\\||\|*\|?\).*'
 
 # Find all files with name 'CVS' and delete it recursively using xargs.
 find . -name 'CVS' | xargs rm -rf
